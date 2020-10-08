@@ -1,9 +1,9 @@
 # ENSE 374 Project
-## Covid BusinessPro web application
+## Covid BusinessPro Web Application
 
 [VLOG 1](https://www.youtube.com/watch?v=-A4Cb1X_mj0&feature=youtu.be)
 
-## Table of contents
+## Table of Contents
 * [Members](#members)
 * [Proposed Project](#proposed‐project)
 * [Methodology and Technologies](#methodology‐and‐technologies)
