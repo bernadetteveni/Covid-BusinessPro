@@ -6,12 +6,12 @@
 ## Table of contents
 * [Members](#members)
 * [Proposed Project](#proposed‐project)
-* [Technologies](#technologies)
+* [Methodology and Technologies](#technologies)
 
 ## Members
-Bernadette Veninata
-Alish Kadiwal
-Zhuo Chen
+Bernadette Veninata,
+Alish Kadiwal,
+Zhuo Chen,
 Abraham Mugerwa
 	
 ## Proposed Project
