@@ -6,7 +6,7 @@
 ## Table of contents
 * [Members](#members)
 * [Proposed Project](#proposed‐project)
-* [Methodology and Technologies](#technologies)
+* [Methodology and Technologies](#methodology‐and‐technologies)
 
 ## Members
 Bernadette Veninata,
