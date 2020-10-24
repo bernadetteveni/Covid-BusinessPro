@@ -5,7 +5,7 @@
 | | | | | | | | | |
 |Abraham|	Consulted|	Informed|	Informed|	Informed |	Accountable	|Accountable	| Accountable	| Accountable|
 | | | | | | | | | |
-|Zhou | | | | | | | | |		
+|Zhou |		Accountable |	Consulted | 	Informed|	Accountable | 	Consulted| 	Consulted| 	Accountable| 	Accountable|		
 | | | | | | | | | |
 |Alish|	cloud | adoption |	| | | | | |	
 								
