@@ -6,10 +6,8 @@ Informed:	People or teams who should be informed about changes
 
 |     |Bernadette| Abraham|Zhou |Alish|
 |-----|----------|----|---|---|
-|Main page| | | | |
+|Main page|| |  A R| |
 |Questionare page| A R | | | |
 |Login page| | | | A R|
 |Registration page| | | | A R |
 |User Profile| | A R| | |
-| | 
-| |
