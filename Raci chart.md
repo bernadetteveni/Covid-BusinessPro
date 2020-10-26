@@ -4,7 +4,7 @@ Responsible:	Any people or teams who are responsible for contributing to the res
 Consulted:	People or teams who should be consulted prior to changes being implemented<br>							
 Informed:	People or teams who should be informed about changes<br>							
 
-|     |Bernadette| Abraham|Zhou |Alish| Stake Holders |
+|     |Bernadette| Abraham|Zhou |Alish| Stakeholders |
 |-----|----------|----|---|---|---|
 |Main page| C I| C I |  A R| I | C I |
 |Questionare page| A R | C I | I |  C I |  C I|
