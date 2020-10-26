@@ -2,6 +2,7 @@
 ## Covid BusinessPro Web Application
 
 [VLOG 1](https://www.youtube.com/watch?v=-A4Cb1X_mj0&feature=youtu.be)
+, [VLOG 2](https://youtu.be/RHELajsj6EE)
 
 ## Table of Contents
 * [Members](#members)
@@ -30,3 +31,8 @@ In the midst of a global pandemic, COVID-19 is threatening Regina businesses and
 
 ## Business Need/Opportunity
 Our app is marketed towards Regina businesses. Currently, many businesses within Regina have had to temporarily close when exposed with an active case of COVID‐19. Within a large business framework, this could become tedious and costly. Rather than clean entire premises and conduct a contact tracing investigation within the organization after a positive COVID‐19 test result by an employee, our app provides an immediate alert to the employer, triggered when an employee has at least 5 corresponding COVID-19 symptoms. Our app has a contact tracing component, which supplies an immediate chain of contacts within the business, reflecting who employees were in contact with, and in which areas of the building, or departments. Generated data helps to optimize the business response to take precautionary measures such as mandating the employee stay home and receive testing, and for the business to initiate a “deep cleaning” of related areas. Our app provides real time data for businesses to track trends, clusters and the spread of symptoms. 
+
+
+
+
+
