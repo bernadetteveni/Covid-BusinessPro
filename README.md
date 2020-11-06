@@ -3,6 +3,7 @@
 
 [VLOG 1](https://www.youtube.com/watch?v=-A4Cb1X_mj0&feature=youtu.be)
 , [VLOG 2](https://youtu.be/RHELajsj6EE)
+, [VLOG 3](https://youtu.be/NnM0xuFU-Bk)
 
 ## Table of Contents
 * [Members](#members)
