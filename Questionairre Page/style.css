@@ -132,7 +132,6 @@ h2 {
     letter-spacing: -0.25px;
     line-height: 1.25;
     font-size: 16px;
-    word-break: break-all;
     word-wrap: pre-wrap;
     color: #282828;
     -webkit-animation-name: p-show;
