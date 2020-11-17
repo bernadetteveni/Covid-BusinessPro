@@ -1,1 +1,1 @@
-Link to page: http://www2.cs.uregina.ca/~veninatb/ENSEProject/Questionairre.html
+Link to questionnaire page: http://www2.cs.uregina.ca/~veninatb/ENSEProject/Questionairre.html
