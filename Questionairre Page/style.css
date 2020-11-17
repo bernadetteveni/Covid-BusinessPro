@@ -118,6 +118,20 @@ h2 {
     animation-duration: 1.5s;
   }
 
+  .survey button {
+    border: none;
+    background-color: 1f7a77;
+    width: 25%;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 38%;
+    padding: 7px 7px;
+    color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
   .locations {
     display: none;
     -webkit-box-align: center;
@@ -174,6 +188,20 @@ h2 {
     /* Safari 4.0 - 8.0 */
     animation-name: p-show;
     animation-duration: 1.5s;
+  }
+
+  .locations button {
+    border: none;
+    background-color: 1f7a77;
+    width: 25%;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 38%;
+    padding: 7px 7px;
+    color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
   }
 
   .container {
@@ -462,6 +490,20 @@ h2 {
         animation-duration: 1.5s;
       }
 
+      .survey button {
+        border: none;
+        background-color: 1f7a77;
+        width: 25%;
+        align-items: center;
+        margin-top: 20px;
+        margin-left: 38%;
+        padding: 7px 7px;
+        color: white;
+        font-family: 'Noto Sans KR', sans-serif;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
       .locations {
         display: none;
         -webkit-box-align: center;
@@ -518,6 +560,20 @@ h2 {
         /* Safari 4.0 - 8.0 */
         animation-name: p-show;
         animation-duration: 1.5s;
+      }
+
+      .locations button {
+        border: none;
+        background-color: 1f7a77;
+        width: 25%;
+        align-items: center;
+        margin-top: 20px;
+        margin-left: 38%;
+        padding: 7px 7px;
+        color: white;
+        font-family: 'Noto Sans KR', sans-serif;
+        text-transform: uppercase;
+        cursor: pointer;
       }
 
       .container {
@@ -803,6 +859,20 @@ h2 {
       animation-duration: 1.5s;
     }
 
+    .survey button {
+      border: none;
+      background-color: 1f7a77;
+      width: 25%;
+      align-items: center;
+      margin-top: 20px;
+      margin-left: 38%;
+      padding: 7px 7px;
+      color: white;
+      font-family: 'Noto Sans KR', sans-serif;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
     .locations {
       display: none;
       -webkit-box-align: center;
@@ -859,6 +929,20 @@ h2 {
       /* Safari 4.0 - 8.0 */
       animation-name: p-show;
       animation-duration: 1.5s;
+    }
+
+    .locations button {
+      border: none;
+      background-color: 1f7a77;
+      width: 25%;
+      align-items: center;
+      margin-top: 20px;
+      margin-left: 38%;
+      padding: 7px 7px;
+      color: white;
+      font-family: 'Noto Sans KR', sans-serif;
+      text-transform: uppercase;
+      cursor: pointer;
     }
 
     .container {
