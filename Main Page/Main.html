@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    </head>
+
+
+<body>  
+    <div class="navigationBar">
+        <div class="logo">
+            Covid BusinessPro
+        </div>
+        <a href="#">Logout</a>
+        <a href="#">User Profile</a>
+      </div>
+      <h2>Main page</h2>
+    <div class="container center">
+
+                  <div id="department_list" class="department">
+                      <h2>Department</h2>
+                      <hr />
+                      <div class="center">
+                    
+                      <div class="dropdown">
+                          <div class="select">
+                          <span>Select Department</span>
+                          <input type="hidden" name="department_list">
+                          <ul class="dropdown-menu">
+                            <li id="1">Marketing</li>
+                            <li id="2">Purchasing</li>
+                            <li id="3">Development </li>
+                            <li id="4">Production</li>
+                            <li id="5">Finance</li>
+                            <li id="6">Purchasing</li>
+                          </ul>
+                          </div>
+                        </div>
+                        <button id="emlist">Submit</button>
+                        <button id="alert_button">Ajax</button>
+                    
+                        </div>
+                  </div>
+
+
+                  <div id="employee_list" style="display:none;" class="employee hidden">
+                    <div><span><button id="back">Back</button><h2>Department</h2></span> </div>
+                    <hr />
+                    <div class="center">
+                    <input  type="text" id="myInput_employee" class="myInput" onkeyup="find_employee()" placeholder="Search for names.." title="Type in a name">
+                    <div class="max_height">
+                    <ul id="myUL_employee" >
+                      <li><a href="#">Adele</a></li>
+                      <li><a href="#">Agnes</a></li>
+                      <li><a href="#">Billy</a></li>
+                      <li><a href="#">Bob</a></li>
+                      <li><a href="#">Calvin</a></li>
+                      <li><a href="#">Christina</a></li>
+                      <li><a href="#">Cindy</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+
+
+                <div id="employee_alert" class="alert hidden">
+                  <h2>Alert</h2>
+                  <hr />
+                  <div class="center">
+                
+                  <input  type="text" id="myInput_alert" class="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+                  <div class="max_height">
+                    <ul id="myUL" >
+                    <li><a href="#">Department: Adele</a></li>
+                    <li><a href="#">Department: Agnes</a></li>
+                    <li><a href="#">Department: Billy</a></li>
+                    <li><a href="#">Department: Bob</a></li>
+                    <li><a href="#">Department: Calvin</a></li>
+                    <li><a href="#">Department: Christina</a></li>
+                    <li><a href="#">Department: Cindy</a></li>
+                    </ul>
+                      </div>
+                  </div>
+              </div>
+    </div>
+      <script type="text/javascript" src="main.js"></script>  
+</body>
+</html>
