@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style2.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    </head>
+
+
+<body>  
+    <div class="navigationBar">
+        <div class="logo">
+            Covid BusinessPro
+        </div>
+        <a href="http://www2.cs.uregina.ca/~veninatb/ENSEProject/Signup.html">Logout</a>
+        <a onclick="Display();" id="alert_button">ALERT</a>
+      </div>
+      <div class="container2">
+        <!-- Div can be made to pop up when theres an alert-->
+        <div id="employee_alert" class="alert hidden">
+          <h2>Alert</h2>
+          <hr />
+          <div class="center">
+          <input  type="text" id="myInput_alert" class="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+          <div class="max_height">
+            <ul id="myUL" >
+            <li><a href="#">Department: Adele</a></li>
+            <li><a href="#">Department: Agnes</a></li>
+            <li><a href="#">Department: Billy</a></li>
+            <li><a href="#">Department: Bob</a></li>
+            <li><a href="#">Department: Calvin</a></li>
+            <li><a href="#">Department: Christina</a></li>
+            <li><a href="#">Department: Cindy</a></li>
+            </ul>
+              </div>
+          </div>
+      </div>
+    </div>
+
+      <h2>Company Name</h2>
+    <div class="container center">
+
+                  <div id="department_list" class="department">
+                      <h2>Department</h2>
+                      <hr />
+                      <div class="center">
+                    
+                      <div class="dropdown">
+                          <div class="select">
+                          <span>Select Department</span>
+                          <input type="hidden" name="department_list">
+                          <ul class="dropdown-menu">
+                            <li id="1">Marketing</li>
+                            <li id="2">Purchasing</li>
+                            <li id="3">Development </li>
+                            <li id="4">Production</li>
+                            <li id="5">Finance</li>
+                            <li id="6">Purchasing</li>
+                          </ul>
+                          </div>
+                        </div>
+                        <button id="emlist">Submit</button>
+                        </div>
+                  </div>
+
+                 
+                  <div id="employee_list" style="display:none;" 
+                  class="department hidden">
+                    <br/>
+                    <h2>Department</h2>
+                    <div class="backButton">
+                      <input class="backButton" type="submit" id="back" value="Back"/>
+                    </div>
+                    <hr />
+                    <div class="center">
+                    <input  type="text" id="myInput_employee" class="myInput" onkeyup="find_employee()" placeholder="Search for names.." title="Type in a name">
+                    <div class="max_height">
+                    <ul id="myUL_employee" >
+                      <li><a href="#">Adele</a></li>
+                      <li><a href="#">Agnes</a></li>
+                      <li><a href="#">Billy</a></li>
+                      <li><a href="#">Bob</a></li>
+                      <li><a href="#">Calvin</a></li>
+                      <li><a href="#">Christina</a></li>
+                      <li><a href="#">Cindy</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+
+    </div>
+      <script type="text/javascript" src="Main.js"></script>  
+</body>
+</html>
