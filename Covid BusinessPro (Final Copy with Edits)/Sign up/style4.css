@@ -1,0 +1,238 @@
+body {
+    /* background: aliceblue; */
+    background-image: linear-gradient(aliceblue, white);
+    margin-top: 80px;
+}
+
+h2 {
+    text-align: center;
+    font-family: Arial;
+    font-size: 28px;
+    color: #5F9EA0;
+    opacity: 0.9;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+.logo {
+    font-weight: bold;
+    float: left;
+    font-family: Arial;
+    padding: 20px 10px;
+    font-size: 18px;
+    color: #1f7a77;
+    opacity: 0.8;
+}
+
+.navigationBar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 55px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: white;
+    opacity: 0.6;
+    font-family: Arial;
+  }
+  
+  .navigationBar a {
+    float: right;
+    margin-right: 20px;
+    font-size: 16px;
+    color: #1f7a77;
+    text-align: center;
+    padding: 20px 10px;
+    text-decoration: none;
+  }
+  
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #departments {
+    display: none;
+  }
+
+  .signup_container{
+    padding: 30px;
+    margin-top: 115px;
+    width: 70%;
+    display: -webkit-box;
+    display: grid;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .signup_container2{
+    margin-top: 75px;
+    /* width: 80%; */
+    display: -webkit-box;
+    display: grid;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .signup_container p{
+    text-align: left;
+  }
+
+  .signup_card input{
+    margin: 5px;
+    width: 250px;
+  }
+
+  .center {
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+  }
+
+  .signup_input{
+    margin-bottom: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 19px;
+    width: 100%;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+  }
+
+  .signup_card{
+    width: 290px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+    background-color: white;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    text-align: center;
+    min-height: auto;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: inherit;
+    padding: 20px;
+    box-shadow: -20px -20px 0px 0px #5F9EA0;
+    border-radius: 10px;
+    -webkit-animation-name: shadow-show;
+    /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1.5s;
+    /* Safari 4.0 - 8.0 */
+    animation-name: shadow-show;
+    animation-duration: 1.5s;
+    -webkit-transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
+    transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
+  }
+
+  .signup_card2{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+    background-color: white;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    text-align: center;
+    min-height: auto;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: inherit;
+    padding: 20px;
+    box-shadow: -20px -20px 0px 0px #5F9EA0;
+    border-radius: 10px;
+    -webkit-animation-name: shadow-show;
+    /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1.5s;
+    /* Safari 4.0 - 8.0 */
+    animation-name: shadow-show;
+    animation-duration: 1.5s;
+    -webkit-transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
+    transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
+  }
+  
+  .form-signin{
+    width: 250px;
+  }
+  .signup_button{
+    background-color: 1f7a77;
+    margin-top: 5%;
+    width: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes line-show {
+    from {
+      margin: 0px 100px;
+    }
+    to {
+      margin: 0px;
+    }
+  }
+  /* Standard syntax */
+  @keyframes line-show {
+    from {
+      margin: 0px 100px;
+    }
+    to {
+      margin: 0px;
+    }
+  }
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes p-show {
+    from {
+      color: white;
+    }
+    to {
+      color: #282828;
+    }
+  }
+  /* Standard syntax */
+  @keyframes p-show {
+    from {
+      color: white;
+    }
+    to {
+      color: #282828;
+    }
+  }
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes shadow-show {
+    from {
+      box-shadow: 0px 0px 0px 0px #e0e0e0;
+    }
+    to {
+      box-shadow: -20px -20px 0px 0px #5F9EA0;
+    }
+  }
+  /* Standard syntax */
+  @keyframes shadow-show {
+    from {
+      box-shadow: 0px 0px 0px 0px #e0e0e0;
+    }
+    to {
+      box-shadow: -20px -20px 0px 0px #5F9EA0;
+    }
+  }
+  
