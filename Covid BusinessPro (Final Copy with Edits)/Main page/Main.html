@@ -13,7 +13,7 @@
             Covid BusinessPro
         </div>
         <a href="http://www2.cs.uregina.ca/~veninatb/ENSEProject/Signup.html">Logout</a>
-        <a onclick="Display();" id="alert_button">ALERT</a>
+        <button class="position" id="active_alert_table">Alert</button>
       </div>
       <div class="container2">
         <!-- Div can be made to pop up when theres an alert-->
@@ -24,14 +24,21 @@
           <input  type="text" id="myInput_alert" class="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
           <div class="max_height">
             <ul id="myUL" >
-            <li><a href="#">Department: Adele</a></li>
-            <li><a href="#">Department: Agnes</a></li>
-            <li><a href="#">Department: Billy</a></li>
-            <li><a href="#">Department: Bob</a></li>
-            <li><a href="#">Department: Calvin</a></li>
-            <li><a href="#">Department: Christina</a></li>
-            <li><a href="#">Department: Cindy</a></li>
-            </ul>
+                <form>
+              <li id="l_a1"><a href="#"><input type="checkbox"  class="checkbox" id="a1">Department: Adele</a></li></form>
+              <form>
+              <li id="l_a2"><a href="#"><input type="checkbox"  class="checkbox" id="a2">Department: Agnes</a></li></form>
+                <form>
+              <li id="l_a3"><a href="#"><input type="checkbox"  class="checkbox" id="a3">Department: Billy</a></li></form>
+                <form>
+              <li id="l_a4"><a href="#"  style="background-color: rgb(246, 237, 152);"  onmouseover="this.style.background='rgb(255, 245, 107)'" onmouseout="this.style.background='rgb(246, 237, 152)'"><input type="checkbox"  class="checkbox" id="a4">Department: Bob</a></li></form>
+                <form>
+              <li id="l_a5"><a href="#"  style="background-color: rgb(246, 237, 152);"  onmouseover="this.style.background='rgb(255, 245, 107)'" onmouseout="this.style.background='rgb(246, 237, 152)'"><input type="checkbox"  class="checkbox" id="a5">Department: Calvin</a></li></form>
+                <form>
+              <li id="l_a6"><a href="#"  style="background-color: rgb(246, 237, 152);"  onmouseover="this.style.background='rgb(255, 245, 107)'" onmouseout="this.style.background='rgb(246, 237, 152)'"><input type="checkbox"  class="checkbox" id="a6">Department: Christina</a></li></form>
+                <form>
+              <li id="l_a7"><a href="#"  style="background-color: rgb(246, 237, 152);"  onmouseover="this.style.background='rgb(255, 245, 107)'" onmouseout="this.style.background='rgb(246, 237, 152)'"><input type="checkbox"  class="checkbox" id="a7">Department: Cindy</a></li></form>
+              </ul>
               </div>
           </div>
       </div>
@@ -64,13 +71,11 @@
                   </div>
 
                  
-                  <div id="employee_list" style="display:none;" 
-                  class="department hidden">
+                  <div id="employee_list" style="display:none;" class="department hidden">
                     <br/>
                     <h2>Department</h2>
-                    <div class="backButton">
-                      <input class="backButton" type="submit" id="back" value="Back"/>
-                    </div>
+                      <form>
+                      <input class="backButton" type="submit" id="back" value="Back"/></form>
                     <hr />
                     <div class="center">
                     <input  type="text" id="myInput_employee" class="myInput" onkeyup="find_employee()" placeholder="Search for names.." title="Type in a name">

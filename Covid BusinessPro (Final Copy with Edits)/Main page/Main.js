@@ -1,18 +1,15 @@
 
-function newElement(){
-    var li = document.createElement("li");
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    li.appendChild(span);
-    for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-        var div = this.parentElement;
-        div.style.display = "none";
+$(document).on('change', '.checkbox', function()  {
+    $id="#"+"l_"+this.id;
+    if(this.checked){
+        $($id).addClass("checked");
     }
-    }
-}
+});
+
+$("#active_alert_table").click(function () {
+    console.log("yes");
+    $("#employee_alert").slideToggle();
+});
 
 function myFunction() {
     var input, filter, ul, li, a, i, txtValue;
@@ -47,8 +44,6 @@ function find_employee() {
         }
     }
 }
-
-newElement();
 
 function Display() {
     var x = document.getElementById("employee_alert");
