@@ -65,10 +65,9 @@
       margin: 4px 2px;
       cursor: pointer;
     }
-  .position{
-    position: absolute;
-    left:95em;
-  }
+    .position{
+      float: right;
+    } 
     * {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -682,15 +681,21 @@
       cursor: pointer;
     }
   
-    #alert_button {
-      margin-right: 80px;
-      color: red;
-      font-weight: bold;
-      border-left: 1px solid grey;
-      border-right: 1px solid grey;
-      background-color: #ffe6e6;
+    .navigationBar button {
+      background-color: white; /* Green */
+      border: none;
+      color:  rgb(216, 104, 104);
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
     }
-  
+    .position{
+      float: right;
+    } 
     * {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -700,7 +705,23 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-  
+    .backButton {
+      display: block;
+      margin: none;
+      top: 0;
+      border: none;
+      background-color: 1f7a77;
+      width: 60px;
+      height:30px;
+      color: white;
+      position: absolute;
+      top: 3.8em;
+      float: left;
+      border-radius: 5px;
+      font-family: 'Noto Sans KR', sans-serif;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
   
     .container {
       position: fixed;
@@ -1281,19 +1302,9 @@
       margin: 4px 2px;
       cursor: pointer;
     }
-  .position{
-    position: absolute;
-    left:95em;
-  }
-
-    #alert_button {
-      margin-right: 80px;
-      color: red;
-      font-weight: bold;
-      border-left: 1px solid grey;
-      border-right: 1px solid grey;
-      background-color: #ffe6e6;
-    }
+    .position{
+      float: right;
+    } 
   
     * {
       -webkit-font-smoothing: antialiased;
@@ -1939,7 +1950,23 @@
       transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
       /* custom */
     }
-  
+    .backButton {
+      display: block;
+      margin: none;
+      top: 0;
+      border: none;
+      background-color: 1f7a77;
+      width: 60px;
+      height:30px;
+      color: white;
+      position: absolute;
+      top: 3.8em;
+      float: left;
+      border-radius: 5px;
+      font-family: 'Noto Sans KR', sans-serif;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
     .department p {
       margin: 15px 0px 0px 0px;
       font-family: 'Noto Sans KR', sans-serif;

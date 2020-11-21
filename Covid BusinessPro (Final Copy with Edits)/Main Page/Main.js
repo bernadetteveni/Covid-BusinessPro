@@ -6,7 +6,7 @@ $(document).on('change', '.checkbox', function()  {
     }
 });
 
-$("#active_alert_table").click(function () {
+$("#alert_button").click(function () {
     console.log("yes");
     $("#employee_alert").slideToggle();
 });
