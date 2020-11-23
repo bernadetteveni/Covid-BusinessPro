@@ -16,12 +16,8 @@
         <ul>
             <form method = "post">
                 <p>Weekly Logs:</p>
-                <li><button type="submit" name="button1" id="active">Nov 16, 2020</button></li>
+                <div id="dates"></div>
             </form>
-            <li><a name="button2" href="#date1">Nov 15, 2020</a></li>
-            <li><a name="button3" href="#date2">Nov 14, 2020</a></li>
-            <li><a name="button4" href="#date3">Nov 13, 2020</a></li> 
-            <!-- innerHTML could be used to dynamically add dates, maybe only going back past week -->
         </ul>
     </div>
     <div id="myDropdown" style="margin-left:200px;padding:1px 16px;">
@@ -112,53 +108,393 @@
 </html>
 
 <?php
-    echo "<script>console.log(\"inside php\")</script>";
+    $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+    if ($db->connect_error)
+    {
+        echo "<script>console.log('Database connection failed')</script>";
+        die ("Connection failed: " . $db->connect_error);
+    }
+
+    $q1 = "SELECT DISTINCT dateOfSurvey FROM Symptoms WHERE dateOfSurvey between date_sub(now(),INTERVAL 1 WEEK) and now()";
+    $r1 = $db->query($q1);
+    $htmlResult = "";
+    $i=1;
+    $dateArray = array();
+    if($r1->num_rows>0){
+        while($row = $r1->fetch_assoc()){
+            $htmlResult = "<script>
+            var txt = document.createElement('div');
+            txt.innerHTML = '<li><button type=\"submit\" name=\"button".$i."\" id=\"active\">".$row["dateOfSurvey"]."</button></li>';
+            document.getElementById(\"dates\").appendChild(txt);
+            </script>";
+            echo $htmlResult;
+            $dateArray[] = $row['dateOfSurvey'];
+        }
+    }
+
     if(isset($_POST['button1'])) { 
-        echo "<script>console.log(\"inside post\")</script>";
-        button1(); 
+        button1($dateArray); 
     } 
-    else if(array_key_exists('button2', $_POST)) { 
-        button2(); 
+    else if(isset($_POST['button2'])) { 
+        button2($dateArray); 
     } 
-    else if(array_key_exists('button3', $_POST)) { 
-        button3(); 
+    else if(isset($_POST['button3'])) { 
+        button3($dateArray); 
     } 
-    else if(array_key_exists('button4', $_POST)) { 
-        button4(); 
+    else if(isset($_POST['button4'])) { 
+        button4($dateArray); 
     } 
-    function button1() { 
-        echo "<script>console.log(\"inside button1\")</script>";
-        echo "<script>var txt = document.createElement('div');
-        txt.innerHTML = \"<h3>Symptoms Log</h3><p>log of users symptoms for questionaire dated 00/00/00 to be pulled from database</p>\";
-        document.getElementById(\"text\").appendChild(txt);
-        var txt2 = document.createElement('div');
-        txt2.innerHTML = \"<h3>Locations Log</h3><p>log of users symptoms for questionaire dated 00/00/00 to be pulled from database</p>\";
-        document.getElementById(\"text2\").appendChild(txt2);
-        document.getElementById(\"active\").style.background='black';
-        </script>"; 
-        $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
+    else if(isset($_POST['button5'])) { 
+        button5($dateArray); 
+    } 
+    else if(isset($_POST['button6'])) { 
+        button6($dateArray); 
+    } 
+    else if(isset($_POST['button7'])) { 
+        button7($dateArray); 
+    } 
+
+    function button1($dateArray) { 
+        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
         if ($db->connect_error)
         {
             echo "<script>console.log('Database connection failed')</script>";
             die ("Connection failed: " . $db->connect_error);
         }
-        if (isset($_POST['button1'])){  
-            echo "<script>console.log(\"inside submit\")</script>";
-            //everything working except this query, not 100% sure on how to join the two tables
-            $query="SELECT * FROM Symptoms INNER JOIN Questionnaire ON Symptoms.qid=Questionnaire.qid WHERE Questionnaire.dateOfQuestionnaire = '2020-11-18'";
-            $result = $conn->query($query);
-            echo $result;
-            $conn->close();
+        echo "<script>console.log(\"inside button1\")</script>";
+
+        $date=$dateArray[0];
+        echo "<script>console.log('".$date."')</script>";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $r2 = $db->query($q2);
+        $htmlResult2 = "";
+        
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
+        document.getElementById(\"text\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row2 = $r2->fetch_assoc()){
+                $htmlResult2 = "<script>
+                    var txt = document.createElement('div');
+                    txt.innerHTML = '<p>".$row2["symptom"]."</p>';
+                    document.getElementById(\"list1\").appendChild(txt);
+                    </script>";
+                echo $htmlResult2;
         }
+
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $r3 = $db->query($q3);
+        $htmlResult3 = "";
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
+        document.getElementById(\"text2\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row3 = $r3->fetch_assoc()){
+            $htmlResult3 = "<script>
+                var txt = document.createElement('div');
+                txt.innerHTML = '<p>".$row3["department"]."</p>';
+                document.getElementById(\"list2\").appendChild(txt);
+                </script>";
+            echo $htmlResult3;
+         }
     } 
-    // REPEAT ABOVE with edits for dates:
-    // function button2() { 
-    //     echo "<script>console.log(\"saved q1\")</script>"; 
-    // } 
-    // function button3() { 
-    //     echo "<script>console.log(\"saved q1\")</script>"; 
-    // } 
-    // function button4() { 
-    //     echo "<script>console.log(\"saved q1\")</script>"; 
-    // } 
+
+    function button2($dateArray) { 
+        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        if ($db->connect_error)
+        {
+            echo "<script>console.log('Database connection failed')</script>";
+            die ("Connection failed: " . $db->connect_error);
+        }
+        echo "<script>console.log(\"inside button1\")</script>";
+
+        $date=$dateArray[1];
+        echo "<script>console.log('".$date."')</script>";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $r2 = $db->query($q2);
+        $htmlResult2 = "";
+        
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
+        document.getElementById(\"text\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row2 = $r2->fetch_assoc()){
+                $htmlResult2 = "<script>
+                    var txt = document.createElement('div');
+                    txt.innerHTML = '<p>".$row2["symptom"]."</p>';
+                    document.getElementById(\"list1\").appendChild(txt);
+                    </script>";
+                echo $htmlResult2;
+        }
+
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $r3 = $db->query($q3);
+        $htmlResult3 = "";
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
+        document.getElementById(\"text2\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row3 = $r3->fetch_assoc()){
+            $htmlResult3 = "<script>
+                var txt = document.createElement('div');
+                txt.innerHTML = '<p>".$row3["department"]."</p>';
+                document.getElementById(\"list2\").appendChild(txt);
+                </script>";
+            echo $htmlResult3;
+         }
+    } 
+
+    function button3($dateArray) { 
+        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        if ($db->connect_error)
+        {
+            echo "<script>console.log('Database connection failed')</script>";
+            die ("Connection failed: " . $db->connect_error);
+        }
+        echo "<script>console.log(\"inside button1\")</script>";
+
+        $date=$dateArray[2];
+        echo "<script>console.log('".$date."')</script>";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $r2 = $db->query($q2);
+        $htmlResult2 = "";
+        
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
+        document.getElementById(\"text\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row2 = $r2->fetch_assoc()){
+                $htmlResult2 = "<script>
+                    var txt = document.createElement('div');
+                    txt.innerHTML = '<p>".$row2["symptom"]."</p>';
+                    document.getElementById(\"list1\").appendChild(txt);
+                    </script>";
+                echo $htmlResult2;
+        }
+
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $r3 = $db->query($q3);
+        $htmlResult3 = "";
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
+        document.getElementById(\"text2\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row3 = $r3->fetch_assoc()){
+            $htmlResult3 = "<script>
+                var txt = document.createElement('div');
+                txt.innerHTML = '<p>".$row3["department"]."</p>';
+                document.getElementById(\"list2\").appendChild(txt);
+                </script>";
+            echo $htmlResult3;
+         }
+    } 
+
+    function button4($dateArray) { 
+        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        if ($db->connect_error)
+        {
+            echo "<script>console.log('Database connection failed')</script>";
+            die ("Connection failed: " . $db->connect_error);
+        }
+        echo "<script>console.log(\"inside button1\")</script>";
+
+        $date=$dateArray[3];
+        echo "<script>console.log('".$date."')</script>";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $r2 = $db->query($q2);
+        $htmlResult2 = "";
+        
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
+        document.getElementById(\"text\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row2 = $r2->fetch_assoc()){
+                $htmlResult2 = "<script>
+                    var txt = document.createElement('div');
+                    txt.innerHTML = '<p>".$row2["symptom"]."</p>';
+                    document.getElementById(\"list1\").appendChild(txt);
+                    </script>";
+                echo $htmlResult2;
+        }
+
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $r3 = $db->query($q3);
+        $htmlResult3 = "";
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
+        document.getElementById(\"text2\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row3 = $r3->fetch_assoc()){
+            $htmlResult3 = "<script>
+                var txt = document.createElement('div');
+                txt.innerHTML = '<p>".$row3["department"]."</p>';
+                document.getElementById(\"list2\").appendChild(txt);
+                </script>";
+            echo $htmlResult3;
+         }
+    } 
+
+    function button5($dateArray) { 
+        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        if ($db->connect_error)
+        {
+            echo "<script>console.log('Database connection failed')</script>";
+            die ("Connection failed: " . $db->connect_error);
+        }
+        echo "<script>console.log(\"inside button1\")</script>";
+
+        $date=$dateArray[4];
+        echo "<script>console.log('".$date."')</script>";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $r2 = $db->query($q2);
+        $htmlResult2 = "";
+        
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
+        document.getElementById(\"text\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row2 = $r2->fetch_assoc()){
+                $htmlResult2 = "<script>
+                    var txt = document.createElement('div');
+                    txt.innerHTML = '<p>".$row2["symptom"]."</p>';
+                    document.getElementById(\"list1\").appendChild(txt);
+                    </script>";
+                echo $htmlResult2;
+        }
+
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $r3 = $db->query($q3);
+        $htmlResult3 = "";
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
+        document.getElementById(\"text2\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row3 = $r3->fetch_assoc()){
+            $htmlResult3 = "<script>
+                var txt = document.createElement('div');
+                txt.innerHTML = '<p>".$row3["department"]."</p>';
+                document.getElementById(\"list2\").appendChild(txt);
+                </script>";
+            echo $htmlResult3;
+         }
+    } 
+
+    function button6($dateArray) { 
+        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        if ($db->connect_error)
+        {
+            echo "<script>console.log('Database connection failed')</script>";
+            die ("Connection failed: " . $db->connect_error);
+        }
+        echo "<script>console.log(\"inside button1\")</script>";
+
+        $date=$dateArray[5];
+        echo "<script>console.log('".$date."')</script>";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $r2 = $db->query($q2);
+        $htmlResult2 = "";
+        
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
+        document.getElementById(\"text\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row2 = $r2->fetch_assoc()){
+                $htmlResult2 = "<script>
+                    var txt = document.createElement('div');
+                    txt.innerHTML = '<p>".$row2["symptom"]."</p>';
+                    document.getElementById(\"list1\").appendChild(txt);
+                    </script>";
+                echo $htmlResult2;
+        }
+
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $r3 = $db->query($q3);
+        $htmlResult3 = "";
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
+        document.getElementById(\"text2\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row3 = $r3->fetch_assoc()){
+            $htmlResult3 = "<script>
+                var txt = document.createElement('div');
+                txt.innerHTML = '<p>".$row3["department"]."</p>';
+                document.getElementById(\"list2\").appendChild(txt);
+                </script>";
+            echo $htmlResult3;
+         }
+    } 
+
+    function button7($dateArray) { 
+        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        if ($db->connect_error)
+        {
+            echo "<script>console.log('Database connection failed')</script>";
+            die ("Connection failed: " . $db->connect_error);
+        }
+        echo "<script>console.log(\"inside button1\")</script>";
+
+        $date=$dateArray[6];
+        echo "<script>console.log('".$date."')</script>";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $r2 = $db->query($q2);
+        $htmlResult2 = "";
+        
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
+        document.getElementById(\"text\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row2 = $r2->fetch_assoc()){
+                $htmlResult2 = "<script>
+                    var txt = document.createElement('div');
+                    txt.innerHTML = '<p>".$row2["symptom"]."</p>';
+                    document.getElementById(\"list1\").appendChild(txt);
+                    </script>";
+                echo $htmlResult2;
+        }
+
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $r3 = $db->query($q3);
+        $htmlResult3 = "";
+        echo  "<script>
+        var txt = document.createElement('div');
+        txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
+        document.getElementById(\"text2\").appendChild(txt);
+        document.getElementById(\"active\").style.background='black';
+        </script>";
+        while($row3 = $r3->fetch_assoc()){
+            $htmlResult3 = "<script>
+                var txt = document.createElement('div');
+                txt.innerHTML = '<p>".$row3["department"]."</p>';
+                document.getElementById(\"list2\").appendChild(txt);
+                </script>";
+            echo $htmlResult3;
+         }
+    } 
+
 ?> 
