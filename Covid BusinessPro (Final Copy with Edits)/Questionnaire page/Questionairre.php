@@ -45,19 +45,21 @@
                 <br>
                 <button type="submit" name="Submit" id="finishedSurvey">Done</button>
         </div>
+    </form>
+    <form method="post"> 
         <div id="locations" class="locations">
             <h2>Log Locations</h2>
             <hr />
-            <p>Locations data to be pulled from database
-            </p>
-            <button id="finishedLocations">Done</button>
+            <div id="locations2">
+            </div>
+            <button type="submit" name="Submit2" id="finishedLocations">Done</button>
         </div>
     </form>
     <script type="text/javascript" src="QuestionairreEvents.js"></script> 
 </body>
 
 <?php
-    $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
+    $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
     if ($db->connect_error)
     {
         echo "<script>console.log('Database connection failed')</script>";
@@ -68,17 +70,55 @@
     if (isset($_POST['Submit']))  
     {  
         echo "<script>console.log(\"inside post\")</script>";
-        $uid = $_SESSION['uid'];
+        // $uid = $_SESSION['uid']; TODO: Change to live uid
+        $uid = 1;
         $date = date('Y-m-d');
-        $q1 = "INSERT INTO Questionnaire (dateOfQuestionnaire) VALUES ('". $date ."')";
-        $r1 = $db->query($q1);
         echo "<script>console.log(\"saved q1\")</script>";
         for ($i=0; $i < sizeof ($checkbox1); $i++) {  
-            $query="INSERT INTO Symptoms (symptom) VALUES ('".$checkbox1[$i]."')";  
+            $query="INSERT INTO Symptoms (uid, symptom, dateOfSurvey) VALUES ('".$uid."', '".$checkbox1[$i]."', '".$date."');";  
+            echo("$query".$query);
             $r2 = $db->query($query);
             echo "<script>console.log(\"saved query\")</script>";
         }  
         echo "<script>console.log(\"inserted\")</script>";
     }
+   
+        // $uid = $_SESSION['uid']; TODO: Change to live uid
+        $uid = 1; 
+        $bid = 1; //TODO: get actual bid for my user from userRegister
+        $sql="SELECT department FROM Departments WHERE (bid = '".$bid."')";
+        $result = $db->query($sql);
+        $htmlResult = "";
+        if($result->num_rows>0){
+            while($row = $result->fetch_assoc()){
+                $htmlResult = "<script>
+                var txt = document.createElement('div');
+                txt.innerHTML = '<input type=\"checkbox\" name=\"chk2[ ]\" value=\"".$row["department"]."\">".$row["department"]."<br />';
+                document.getElementById(\"locations2\").appendChild(txt);
+                </script>";
+                echo $htmlResult;
+            }
+        }
+        else{
+            echo("0 results"); //TODO: fix print statement when no results
+        }
+
+        $checkbox2 = $_POST['chk2'];
+        if (isset($_POST['Submit2']))  
+        {  
+            echo "<script>console.log(\"inside post\")</script>";
+            // $uid = $_SESSION['uid']; TODO: Change to live uid
+            $uid = 1;
+            $date = date('Y-m-d');
+            $bid = 1; //TODO: get actual bid for my user from userRegister
+            echo "<script>console.log(\"saved q1\")</script>";
+            for ($i=0; $i < sizeof ($checkbox2); $i++) {  
+                $query="INSERT INTO logLocation (uid, bid, department, dateOfLog) VALUES ('".$uid."', '".$bid."', '".$checkbox2[$i]."', '".$date."');";  
+                echo("$query".$query);
+                $r2 = $db->query($query);
+                echo "<script>console.log(\"saved query\")</script>";
+            }  
+            echo "<script>console.log(\"inserted\")</script>";
+        }
 ?>
 
