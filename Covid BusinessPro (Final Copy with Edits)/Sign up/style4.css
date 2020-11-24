@@ -4,6 +4,15 @@ body {
     margin-top: 80px;
 }
 
+.textarea_readonly{
+  overflow-wrap: normal;
+  width: 290px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4%;
+  height: 400px;
+  overflow: auto;
+}
 h2 {
     text-align: center;
     font-family: Arial;
@@ -123,6 +132,7 @@ h2 {
     margin-left: auto;
     margin-right: auto;
     margin-top: 4%;
+    overflow: auto;
     background-color: white;
     border-color: black;
     border-style: solid;
@@ -180,6 +190,7 @@ h2 {
     margin-top: 5%;
     width: 100%;
     font-family: 'Noto Sans KR', sans-serif;
+    color:white;
   }
   /* Safari 4.0 - 8.0 */
   @-webkit-keyframes line-show {
