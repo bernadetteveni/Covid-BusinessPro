@@ -124,10 +124,11 @@
         while($row = $r1->fetch_assoc()){
             $htmlResult = "<script>
             var txt = document.createElement('div');
-            txt.innerHTML = '<li><button type=\"submit\" name=\"button".$i."\" id=\"active\">".$row["dateOfSurvey"]."</button></li>';
+            txt.innerHTML = '<li><button type=\"submit\" name=\"button".$i."\" id=\"active".$i."\">".$row["dateOfSurvey"]."</button></li>';
             document.getElementById(\"dates\").appendChild(txt);
             </script>";
             echo $htmlResult;
+            $i++;
             $dateArray[] = $row['dateOfSurvey'];
         }
     }
@@ -173,7 +174,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
         document.getElementById(\"text\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active1\").style.background='black';
         </script>";
         while($row2 = $r2->fetch_assoc()){
                 $htmlResult2 = "<script>
@@ -191,7 +192,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
         document.getElementById(\"text2\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active1\").style.background='black';
         </script>";
         while($row3 = $r3->fetch_assoc()){
             $htmlResult3 = "<script>
@@ -222,7 +223,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
         document.getElementById(\"text\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active2\").style.background='black';
         </script>";
         while($row2 = $r2->fetch_assoc()){
                 $htmlResult2 = "<script>
@@ -240,7 +241,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
         document.getElementById(\"text2\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active2\").style.background='black';
         </script>";
         while($row3 = $r3->fetch_assoc()){
             $htmlResult3 = "<script>
@@ -271,7 +272,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
         document.getElementById(\"text\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active3\").style.background='black';
         </script>";
         while($row2 = $r2->fetch_assoc()){
                 $htmlResult2 = "<script>
@@ -289,7 +290,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
         document.getElementById(\"text2\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active3\").style.background='black';
         </script>";
         while($row3 = $r3->fetch_assoc()){
             $htmlResult3 = "<script>
@@ -320,7 +321,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
         document.getElementById(\"text\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active4\").style.background='black';
         </script>";
         while($row2 = $r2->fetch_assoc()){
                 $htmlResult2 = "<script>
@@ -338,7 +339,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
         document.getElementById(\"text2\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active4\").style.background='black';
         </script>";
         while($row3 = $r3->fetch_assoc()){
             $htmlResult3 = "<script>
@@ -369,7 +370,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
         document.getElementById(\"text\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active5\").style.background='black';
         </script>";
         while($row2 = $r2->fetch_assoc()){
                 $htmlResult2 = "<script>
@@ -387,7 +388,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
         document.getElementById(\"text2\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active5\").style.background='black';
         </script>";
         while($row3 = $r3->fetch_assoc()){
             $htmlResult3 = "<script>
@@ -418,7 +419,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
         document.getElementById(\"text\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active6\").style.background='black';
         </script>";
         while($row2 = $r2->fetch_assoc()){
                 $htmlResult2 = "<script>
@@ -436,7 +437,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
         document.getElementById(\"text2\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active6\").style.background='black';
         </script>";
         while($row3 = $r3->fetch_assoc()){
             $htmlResult3 = "<script>
@@ -467,7 +468,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Symptoms Log</h3><div id=\"list1\"></div>';
         document.getElementById(\"text\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active7\").style.background='black';
         </script>";
         while($row2 = $r2->fetch_assoc()){
                 $htmlResult2 = "<script>
@@ -485,7 +486,7 @@
         var txt = document.createElement('div');
         txt.innerHTML = '<h3>Locations Log</h3><div id=\"list2\"></div>';
         document.getElementById(\"text2\").appendChild(txt);
-        document.getElementById(\"active\").style.background='black';
+        document.getElementById(\"active7\").style.background='black';
         </script>";
         while($row3 = $r3->fetch_assoc()){
             $htmlResult3 = "<script>
