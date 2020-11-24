@@ -76,7 +76,6 @@
         echo "<script>console.log(\"saved q1\")</script>";
         for ($i=0; $i < sizeof ($checkbox1); $i++) {  
             $query="INSERT INTO Symptoms (uid, symptom, dateOfSurvey) VALUES ('".$uid."', '".$checkbox1[$i]."', '".$date."');";  
-            echo("$query".$query);
             $r2 = $db->query($query);
             echo "<script>console.log(\"saved query\")</script>";
         }  
@@ -86,7 +85,7 @@
         // $uid = $_SESSION['uid']; TODO: Change to live uid
         $uid = 1; 
         $bid = 1; //TODO: get actual bid for my user from userRegister
-        $sql="SELECT department FROM Departments WHERE (bid = '".$bid."')";
+        $sql="SELECT department FROM Departments WHERE (bid = '".$bid."');";
         $result = $db->query($sql);
         $htmlResult = "";
         if($result->num_rows>0){
@@ -114,11 +113,36 @@
             echo "<script>console.log(\"saved q1\")</script>";
             for ($i=0; $i < sizeof ($checkbox2); $i++) {  
                 $query="INSERT INTO logLocation (uid, bid, department, dateOfLog) VALUES ('".$uid."', '".$bid."', '".$checkbox2[$i]."', '".$date."');";  
-                echo("$query".$query);
                 $r2 = $db->query($query);
                 echo "<script>console.log(\"saved query\")</script>";
             }  
             echo "<script>console.log(\"inserted\")</script>";
+        }
+
+        $date = date('Y-m-d');
+        $q3 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $r3 = $db->query($q3);
+        $count=0;
+        $symptomArray = array();
+        while($row2 = $r3->fetch_assoc()){
+            $symptomArray[] = $row['symptom'];
+            $count++;
+        }
+        echo "<script>console.log(\"'".$count."'\")</script>";
+        if ($count <= "2") {
+            echo "<script>console.log(\"alert 0\")</script>";
+            $q4="INSERT INTO Alert (uid, alertLevel, dateOfAlert) VALUES ('".$uid."', '0', '".$date."');";  
+            $r4 = $db->query($q4);
+        }
+        else if($count >= "3" && $count <="4" ){
+            echo "<script>console.log(\"alert 1\")</script>";
+            $q5="INSERT INTO Alert (uid, alertLevel, dateOfAlert) VALUES ('".$uid."', '1', '".$date."');"; 
+            $r5 = $db->query($q4);
+        }
+        else if($count >= "5"){
+            echo "<script>console.log(\"alert 2\")</script>";
+            $q6="INSERT INTO Alert (uid, alertLevel, dateOfAlert) VALUES ('".$uid."', '2', '".$date."');";  
+            $r6 = $db->query($q4);
         }
 ?>
 
