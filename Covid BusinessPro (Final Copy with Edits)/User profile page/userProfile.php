@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    $uid = $_SESSION['user_id'];
+    echo "<script>console.log(\"logged in with uid\", '".$uid."')</script>";
+    if(!isset($_SESSION['user_id'])){
+        header("Location: http://184.169.60.213/Signup.php");
+        die();
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,7 +127,8 @@
         die ("Connection failed: " . $db->connect_error);
     }
 
-    $q1 = "SELECT DISTINCT dateOfSurvey FROM Symptoms WHERE dateOfSurvey between date_sub(now(),INTERVAL 1 WEEK) and now()";
+    $uid = $_SESSION['user_id'];
+    $q1 = "SELECT DISTINCT dateOfSurvey FROM Symptoms WHERE (dateOfSurvey between date_sub(now(),INTERVAL 1 WEEK) and now()) AND (uid='$uid');";
     $r1 = $db->query($q1);
     $htmlResult = "";
     $i=1;
@@ -164,9 +177,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
+        $uid = $_SESSION['user_id'];
         $date=$dateArray[0];
         echo "<script>console.log('".$date."')</script>";
-        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
         $r2 = $db->query($q2);
         $htmlResult2 = "";
         
@@ -185,7 +199,7 @@
                 echo $htmlResult2;
         }
 
-        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."') AND (uid='$uid');";
         $r3 = $db->query($q3);
         $htmlResult3 = "";
         echo  "<script>
@@ -213,9 +227,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
+        $uid = $_SESSION['user_id'];
         $date=$dateArray[1];
         echo "<script>console.log('".$date."')</script>";
-        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
         $r2 = $db->query($q2);
         $htmlResult2 = "";
         
@@ -234,7 +249,7 @@
                 echo $htmlResult2;
         }
 
-        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."') AND (uid='$uid');";
         $r3 = $db->query($q3);
         $htmlResult3 = "";
         echo  "<script>
@@ -262,9 +277,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
+        $uid = $_SESSION['user_id'];
         $date=$dateArray[2];
         echo "<script>console.log('".$date."')</script>";
-        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
         $r2 = $db->query($q2);
         $htmlResult2 = "";
         
@@ -283,7 +299,7 @@
                 echo $htmlResult2;
         }
 
-        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."') AND (uid='$uid');";
         $r3 = $db->query($q3);
         $htmlResult3 = "";
         echo  "<script>
@@ -311,9 +327,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
+        $uid = $_SESSION['user_id'];
         $date=$dateArray[3];
         echo "<script>console.log('".$date."')</script>";
-        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
         $r2 = $db->query($q2);
         $htmlResult2 = "";
         
@@ -332,7 +349,7 @@
                 echo $htmlResult2;
         }
 
-        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."') AND (uid='$uid');";
         $r3 = $db->query($q3);
         $htmlResult3 = "";
         echo  "<script>
@@ -360,9 +377,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
+        $uid = $_SESSION['user_id'];
         $date=$dateArray[4];
         echo "<script>console.log('".$date."')</script>";
-        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
         $r2 = $db->query($q2);
         $htmlResult2 = "";
         
@@ -381,7 +399,7 @@
                 echo $htmlResult2;
         }
 
-        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."') AND (uid='$uid');";
         $r3 = $db->query($q3);
         $htmlResult3 = "";
         echo  "<script>
@@ -409,9 +427,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
+        $uid = $_SESSION['user_id'];
         $date=$dateArray[5];
         echo "<script>console.log('".$date."')</script>";
-        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
         $r2 = $db->query($q2);
         $htmlResult2 = "";
         
@@ -430,7 +449,7 @@
                 echo $htmlResult2;
         }
 
-        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."') AND (uid='$uid');";
         $r3 = $db->query($q3);
         $htmlResult3 = "";
         echo  "<script>
@@ -458,9 +477,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
+        $uid = $_SESSION['user_id'];
         $date=$dateArray[6];
         echo "<script>console.log('".$date."')</script>";
-        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+        $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
         $r2 = $db->query($q2);
         $htmlResult2 = "";
         
@@ -479,7 +499,7 @@
                 echo $htmlResult2;
         }
 
-        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."');";
+        $q3 = "SELECT DISTINCT department FROM logLocation WHERE (dateOfLog = '".$date."') AND (uid='$uid');";
         $r3 = $db->query($q3);
         $htmlResult3 = "";
         echo  "<script>
