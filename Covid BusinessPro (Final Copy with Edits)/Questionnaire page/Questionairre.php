@@ -48,11 +48,19 @@
         <div id="survey" class="survey">
             <h2>Survey</h2>
             <hr />
-                <input type="checkbox" name="chkl[ ]" value="Symptom1">Symptom1<br />  
-                <input type="checkbox" name="chkl[ ]" value="Symptom2">Symptom2<br />  
-                <input type="checkbox" name="chkl[ ]" value="Symptom3">Symptom3<br />  
-                <input type="checkbox" name="chkl[ ]" value="Symptom4">Symptom4<br />  
-                <input type="checkbox" name="chkl[ ]" value="Symptom5">Symptom5<br /> 
+                <input type="checkbox" name="chkl[ ]" value="Fever">Fever<br />  
+                <input type="checkbox" name="chkl[ ]" value="Dry cough">Dry cough<br />  
+                <input type="checkbox" name="chkl[ ]" value="Tiredness">Tiredness<br />  
+                <input type="checkbox" name="chkl[ ]" value="Aches and pains">Aches and pains<br />  
+                <input type="checkbox" name="chkl[ ]" value="Sore throat">Sore throat<br /> 
+                <input type="checkbox" name="chkl[ ]" value="Diarrhea">Diarrhea<br /> 
+                <input type="checkbox" name="chkl[ ]" value="Conjunctivitis">Conjunctivitis<br />
+                <input type="checkbox" name="chkl[ ]" value="Headache">Headache<br />
+                <input type="checkbox" name="chkl[ ]" value="Loss of taste or smell">Loss of taste or smell<br />
+                <input type="checkbox" name="chkl[ ]" value="A rash on skin, or discolouration of fingers or toes">A rash on skin, or discolouration of fingers or toes<br />
+                <input type="checkbox" name="chkl[ ]" value="Difficulty breathing or shortness of breath">Difficulty breathing or shortness of breath<br />
+                <input type="checkbox" name="chkl[ ]" value="Chest pain or pressure">Chest pain or pressure<br />
+                <input type="checkbox" name="chkl[ ]" value="Loss of speech or movement">Loss of speech or movement<br />
                 <br>
                 <button type="submit" name="Submit" id="finishedSurvey">Done</button>
         </div>
