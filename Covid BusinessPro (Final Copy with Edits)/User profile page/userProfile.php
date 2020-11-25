@@ -21,8 +21,8 @@
         <div class="logo">
             Covid BusinessPro
         </div>
-        <a href="http://www2.cs.uregina.ca/~veninatb/ENSEProject/Signup.html">Logout</a>  
-        <a href="http://www2.cs.uregina.ca/~veninatb/ENSEProject/Questionairre.php">Questionnaire</a> 
+        <a href="http://184.169.60.213/Logout.php">Logout</a>  
+        <a href="http://184.169.60.213/Questionairre.php">Questionnaire</a> 
       </div>
     <div class="sidebar">
         <ul>
