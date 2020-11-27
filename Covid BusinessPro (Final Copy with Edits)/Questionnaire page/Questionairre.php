@@ -48,6 +48,10 @@
         <div id="survey" class="survey">
             <h2>Survey</h2>
             <hr />
+                <p>Please select the option(s) that apply to you:</p></br>
+                <input type="checkbox" name="chkl[ ]" value="No symptoms">No symptoms<br /> 
+                <div id="risk"></div> 
+                <div id="hide"><input id = "highrisk" type="checkbox" name="chkl[ ]" value="I have been in contact with someone who has COVID‐19">I have been in contact with someone who has COVID‐19<br /></div>
                 <input type="checkbox" name="chkl[ ]" value="Fever">Fever<br />  
                 <input type="checkbox" name="chkl[ ]" value="Dry cough">Dry cough<br />  
                 <input type="checkbox" name="chkl[ ]" value="Tiredness">Tiredness<br />  
@@ -69,6 +73,7 @@
         <div id="locations" class="locations">
             <h2>Log Locations</h2>
             <hr />
+            <p>Please select the departments you have entered today:</p></br>
             <div id="locations2">
             </div>
             <button type="submit" name="Submit2" id="finishedLocations">Done</button>
@@ -152,31 +157,42 @@
         }  
         echo "<script>console.log(\"inserted\")</script>";
     }
-
+    
     $date = date('Y-m-d');
-    $q3 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."');";
+    $q3 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid ='$uid');";
     $r3 = $db->query($q3);
     $count=0;
     $symptomArray = array();
     while($row2 = $r3->fetch_assoc()){
-        $symptomArray[] = $row['symptom'];
+        $symptomArray[] = $row2['symptom'];
         $count++;
     }
+
+    if (in_array("I have been in contact with someone who has COVID‐19", $symptomArray)) {
+        $inContact = True;
+    }
+
     echo "<script>console.log(\"'".$count."'\")</script>";
-    if ($count <= "2") {
+    if ($count <= "2" && !$inContact) {
         echo "<script>console.log(\"alert 0\")</script>";
-        $q4="INSERT INTO Alert (uid, alertLevel, dateOfAlert) VALUES ('".$uid."', '0', '".$date."');";  
+        $q4="INSERT INTO Alert (uid, bid, alertLevel, dateOfAlert) VALUES ('".$uid."', '".$bid."', '0', '".$date."');";  
         $r4 = $db->query($q4);
     }
-    else if($count >= "3" && $count <="4" ){
+    else if($count >= "3" && $count <="4" && !$inContact){
         echo "<script>console.log(\"alert 1\")</script>";
-        $q5="INSERT INTO Alert (uid, alertLevel, dateOfAlert) VALUES ('".$uid."', '1', '".$date."');"; 
-        $r5 = $db->query($q4);
+        $q5="INSERT INTO Alert (uid, bid, alertLevel, dateOfAlert) VALUES ('".$uid."', '".$bid."', '1', '".$date."');"; 
+        $r5 = $db->query($q5);
     }
-    else if($count >= "5"){
+    else if($count >= "5" && !$inContact){
         echo "<script>console.log(\"alert 2\")</script>";
-        $q6="INSERT INTO Alert (uid, alertLevel, dateOfAlert) VALUES ('".$uid."', '2', '".$date."');";  
-        $r6 = $db->query($q4);
+        $q6="INSERT INTO Alert (uid, bid, alertLevel, dateOfAlert) VALUES ('".$uid."', '".$bid."', '2', '".$date."');";  
+        $r6 = $db->query($q6);
     }
+    else if($inContact){
+        $q7="INSERT INTO Alert (uid, bid, alertLevel, dateOfAlert) VALUES ('".$uid."', '".$bid."', '2', '".$date."');";  
+        $r7 = $db->query($q7);
+    }
+
+
 ?>
 
