@@ -1,3 +1,8 @@
+$(document).ready(function(){
+    $("#add_alert_list").on("change", "input:checkbox", function(){
+        $("#add_alert_list").submit();
+    });
+});
 
 $(document).on('change', '.checkbox', function()  {
     $id="#"+"l_"+this.id;
@@ -7,46 +12,58 @@ $(document).on('change', '.checkbox', function()  {
 });
 
 $("#alert_button").click(function () {
-    console.log("yes");
     $("#employee_alert").slideToggle();
 });
 
 function myFunction() {
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById("myInput_alert");
-    filter = input.value.toUpperCase();
+    var input, ul, li, a, i;
+    input = document.getElementById("myInput_alert").value;
+    inputUpper = input.toUpperCase();
     ul = document.getElementById("myUL");
     li = ul.getElementsByTagName("li");
+    var arr = [];
     for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        a=li[i].getElementsByTagName("a")[0];
+        b=a.innerText.toUpperCase();
+        arr.push(b);
+    }
+    var regex = new RegExp("(^" + inputUpper + ")","m");
+    for(i=0; i < arr.length; i++){
+        if(regex.test(arr[i])){
             li[i].style.display = "";
-        } else {
+        }
+        else{
             li[i].style.display = "none";
         }
     }
 }
 
 function find_employee() {
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById("myInput_employee");
-    filter = input.value.toUpperCase();
+    var input, ul, li, a, i;
+    input = document.getElementById("myInput_employee").value;
+    inputUpper = input.toUpperCase();
     ul = document.getElementById("myUL_employee");
     li = ul.getElementsByTagName("li");
+    var arr = [];
     for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        a=li[i].getElementsByTagName("a")[0];
+        b=a.innerText.toUpperCase();;
+        arr.push(b);
+    }
+    var regex = new RegExp("(^" + inputUpper + ")","m");
+    for(i=0; i < arr.length; i++){
+        if(regex.test(arr[i])){
             li[i].style.display = "";
-        } else {
+            console.log(li[i]);
+        }
+        else{
             li[i].style.display = "none";
         }
     }
 }
 
 function Display() {
-    var x = document.getElementById("employee_alert");
+    var x = document.getElementById("employeecalert");
     if (x.style.display === "none") {
         x.style.display = "block";
         var element = document.getElementById("department_list");
@@ -63,12 +80,8 @@ $('#emlist').click(function () {
     $("#department_list").hide();
 });
 
-$('#back').click(function () {
-    $("#employee_list").hide();
-    $("#department_list").show();
-});
-
 $('.dropdown').click(function () {
+    
     $(this).attr('tabindex', 1).focus();
     $(this).toggleClass('active');
     $(this).find('.dropdown-menu').slideToggle(300);
@@ -78,13 +91,10 @@ $('.dropdown').focusout(function () {
     $(this).find('.dropdown-menu').slideUp(300);
 });
 
-
-
 $('.dropdown .dropdown-menu li').click(function () {
     $(this).parents('.dropdown').find('span').text($(this).text());
     $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
 });
-/*End Dropdown Menu*/
 
 $('.dropdown-menu li').click(function () {
 var input = '<strong>' + $(this).parents('.dropdown').find('input').val() + '</strong>',
