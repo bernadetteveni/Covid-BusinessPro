@@ -1,6 +1,9 @@
 <?php
     session_start();
-    $uid = $_SESSION['user_id'];
+    if ($_SESSION['type']=='1') 
+    {$uid=$_GET['uid'];}
+    else if($_SESSION['type']=='0') 
+    {$uid = $_SESSION['user_id'];}
     echo "<script>console.log(\"logged in with uid\", '".$uid."')</script>";
     if(!isset($_SESSION['user_id'])){
         header("Location: http://184.169.60.213/Signup.php");
@@ -23,7 +26,7 @@
         </div>
         <a href="http://184.169.60.213/Logout.php">Logout</a>  
         <a href="http://184.169.60.213/Questionairre.php">Questionnaire</a> 
-      </div>
+    </div>
     <div class="sidebar">
         <ul>
             <form method = "post">
@@ -33,81 +36,134 @@
         </ul>
     </div>
     <div id="myDropdown" style="margin-left:200px;padding:1px 16px;">
-        <h2>User Profile</h2>
+        <h2 id="username" style="padding: 0; margin: 0;"></h2>
+        <img src="avatar.png" alt="avatar.png" style="display: block; width: 80px; margin-left: auto; margin-right: auto;">
+        <p id="age" style="text-align: center;"></p>
+        <p id="corporation" style="text-align: center;"></p>
         <hr />
         <div id="text"></div>
         <div id="text2"></div>
         <br>
+        <?php
+           $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+           if ($db->connect_error)
+           {
+               echo "<script>console.log('Database connection failed')</script>";
+               die ("Connection failed: " . $db->connect_error);
+           }
+     
+            $start_date = date('Y-m-d');
+            $date = DateTime::createFromFormat('Y-m-d',$start_date);
+            $dateMod = DateTime::createFromFormat('Y-m-d',$start_date);
+            $date->modify('-7 days');
+            $dateformat= date('Y-m-d');
+            $todayMaybe = date('Y-m-d', strtotime($today. ' - 0 days'));
+            $dateformatMod;
+        ?>
         <h3 class="chart">Weekly Trend</h3>
         <div id="bar-chart">
         <div class="graph">
             <ul class="x-axis">
-            <li><span>2010</span></li>
-            <li><span>2012</span></li>
-            <li><span>2013</span></li>
-            <li><span>2014</span></li>
-            <li><span>2015</span></li>
+            <?php
+
+            $q1 = "SELECT DISTINCT dateOfSurvey FROM Symptoms WHERE (dateOfSurvey between date_sub(now(),INTERVAL 1 WEEK) and now()) AND (uid='$uid');";
+            $r1 = $db->query($q1);
+            //echo $r1;
+           $noDay=0;
+            while ($noDay !=7 ){
+                $date->modify('1 days');
+                echo"<li><span>".$date->format('Y-m-d')."</span></li>";
+                $noDay++;
+            };
+            $today= date('Y-m-d');
+            getsymptomsCount($db);
+            function getsymptomsCount($db){
+                $sql= "SELECT DISTINCT symptom FROM Symptoms where dateOfSurvey= '".date('Y-m-d', strtotime($today. ' - 0 days'))."' and uid ='$uid'";
+                $q= $db->query($sql);
+                $row = $q->fetch_assoc();
+            }
+            
+            $dayHeight= array();
+            $modDate=$dateMod->modify('-7 days');
+            $height=array();                
+                $newToday= date('Y-m-d', strtotime($today. ' - 7 days'));
+                $today= date('Y-m-d', strtotime($today. ' - 8 days'));
+                for($i=0; $i<7;$i++){
+                    $sql= "SELECT DISTINCT symptom FROM Symptoms where dateOfSurvey= '".date('Y-m-d', strtotime($today. ' + 1 days'))."' and uid ='$uid'";
+                    $q= $db->query($sql);
+                    $row = $q->fetch_assoc();
+                    $dayCount= $q->num_rows;
+                    if($dayCount > 0 ){
+                        $d = 7520 * 1.5 * $dayCount /1000;
+                            array_push($dayHeight,"$d");
+                            array_push($height,"$d");
+                    }
+                    else{
+                        $j=2;
+                        while($j!=2 && $dayCount=0){
+                            $sql= "SELECT DISTINCT symptom FROM Symptoms where dateOfSurvey= '".date('Y-m-d', strtotime($today. ' + 1 days'))."' and uid ='$uid'";
+                            $q= $db->query($sql);
+                            $row = $q->fetch_assoc();
+                            $dayCount= $q->num_rows;
+                        }
+                        if($dayCount >0 ){
+                            $d = 7520 * 1.5 * $dayCount /1000;
+                            array_push($dayHeight,"$d");
+                            array_push($height,"$d");
+                        }
+                        else{
+                            $d = 7520 * 1.5 * $dayCount /1000;
+                            array_push($dayHeight,"$d");
+                            array_push($height,"$d");
+                        }        
+                    }
+                    $newToday = date('Y-m-d', strtotime($newToday. ' + 1 days'));
+                    $today= $newToday;                   
+                }
+            ?>
             </ul>
             <ul class="y-axis">
-            <li><span>20</span></li>
-            <li><span>15</span></li>
-            <li><span>10</span></li>
-            <li><span>5</span></li>
+            <li><span>8</span></li>
+            <li><span>6</span></li>
+            <li><span>4</span></li>
+            <li><span>2</span></li>
             <li><span>0</span></li>
             </ul>
-                <div class="bars">
-                    <div class="bar-group">
-                         <div class="bar bar-1 stat-1" style="height: 51%;">      
-                            <span>4080</span>
-                         </div>
-                    <div class="bar bar-2 stat-2" style="height: 71%;">
-                        <span>5680</span>
-                    </div>
-                    <div class="bar bar-3 stat-3" style="height: 13%;">
-                        <span>1040</span>
-                    </div>
-                </div>
+                
+                 
+            <div class="bars">
             <div class="bar-group">
-                <div class="bar bar-4 stat-1" style="height: 76%;">
-                    <span>6080</span>
-                </div>
-            <div class="bar bar-5 stat-2" style="height: 86%;">
-                <span>6880</span>
+                <div class="bar bar-1 stat-3" style="height: <?= $dayHeight[0]?>%;">
+                    <span>1040</span>
+                </div>             
             </div>
-            <div class="bar bar-6 stat-3" style="height: 22%;">
+            <div class="bar-group">
+            <div class="bar bar-2 stat-3" style="height: <?= $dayHeight[1]?>%;">
                 <span>1760</span>
             </div>
         </div>
         <div class="bar-group">
-            <div class="bar bar-7 stat-1" style="height: 78%;">
-                <span>6240</span>
-            </div>
-            <div class="bar bar-8 stat-2" style="height: 72%;">
-                <span>5760</span>
-            </div>
-            <div class="bar bar-9 stat-3" style="height: 36%;">
+            <div class="bar bar-3 stat-3" style="height:  <?= $dayHeight[2]?>%;">
                 <span>2880</span>
             </div>
         </div>
         <div class="bar-group">
-            <div class="bar bar-10 stat-1" style="height: 44%;">
-                <span>3520</span>
-            </div>
-            <div class="bar bar-11 stat-2" style="height: 64%;">
-                <span>5120</span>
-            </div>
-            <div class="bar bar-12 stat-3" style="height: 59%">
+            <div class="bar bar-4 stat-3" style="height: <?= $dayHeight[3]?>%">
                 <span>4720</span>
             </div>
         </div>
         <div class="bar-group">
-            <div class="bar bar-13 stat-1" style="height: 28%;">
-                <span>2240</span>
+            <div class="bar bar-5 stat-3" style="height: <?= $dayHeight[4]?>%;">
+                <span>7520</span>
             </div>
-            <div class="bar bar-14 stat-2" style="height: 33%;">
-                <span>2640</span>
+        </div>
+        <div class="bar-group">
+            <div class="bar bar-6 stat-3" style="height: <?=$dayHeight[5]?>%;">
+                <span>7520</span>
             </div>
-            <div class="bar bar-15 stat-3" style="height: 94%;">
+        </div>
+        <div class="bar-group">
+            <div class="bar bar-7 stat-3" style="height: <?=$dayHeight[6]?>%;">
                 <span>7520</span>
             </div>
         </div>
@@ -115,7 +171,7 @@
   </div>
 </div>
     </div>
-
+    
 </body>
 </html>
 
@@ -127,7 +183,21 @@
         die ("Connection failed: " . $db->connect_error);
     }
 
-    $uid = $_SESSION['user_id'];
+    if ($_SESSION['type']=='1') 
+    {$uid=$_GET['uid'];}
+    else if($_SESSION['type']=='0') 
+    {$uid = $_SESSION['user_id'];}
+    $q0 = "SELECT username FROM userRegister WHERE uid = '$uid'";
+    $r0 = $db->query($q0);
+    while($rows0 = $r0->fetch_assoc()){
+        echo "<script>
+        var username = document.createElement('h2');
+        username.innerHTML = '<h2>".$rows0['username']."</h2>';
+        document.getElementById(\"username\").appendChild(username);
+        </script>";
+    }
+
+
     $q1 = "SELECT DISTINCT dateOfSurvey FROM Symptoms WHERE (dateOfSurvey between date_sub(now(),INTERVAL 1 WEEK) and now()) AND (uid='$uid');";
     $r1 = $db->query($q1);
     $htmlResult = "";
@@ -177,7 +247,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
-        $uid = $_SESSION['user_id'];
+        if ($_SESSION['type']=='1') 
+        {$uid=$_GET['uid'];}
+        else if($_SESSION['type']=='0') 
+        {$uid = $_SESSION['user_id'];}
         $date=$dateArray[0];
         echo "<script>console.log('".$date."')</script>";
         $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
@@ -227,7 +300,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
-        $uid = $_SESSION['user_id'];
+        if ($_SESSION['type']=='1') 
+        {$uid=$_GET['uid'];}
+        else if($_SESSION['type']=='0') 
+        {$uid = $_SESSION['user_id'];}
         $date=$dateArray[1];
         echo "<script>console.log('".$date."')</script>";
         $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
@@ -277,7 +353,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
-        $uid = $_SESSION['user_id'];
+        if ($_SESSION['type']=='1') 
+        {$uid=$_GET['uid'];}
+        else if($_SESSION['type']=='0') 
+        {$uid = $_SESSION['user_id'];}
         $date=$dateArray[2];
         echo "<script>console.log('".$date."')</script>";
         $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
@@ -327,7 +406,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
-        $uid = $_SESSION['user_id'];
+        if ($_SESSION['type']=='1') 
+        {$uid=$_GET['uid'];}
+        else if($_SESSION['type']=='0') 
+        {$uid = $_SESSION['user_id'];}
         $date=$dateArray[3];
         echo "<script>console.log('".$date."')</script>";
         $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
@@ -377,7 +459,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
-        $uid = $_SESSION['user_id'];
+        if ($_SESSION['type']=='1') 
+        {$uid=$_GET['uid'];}
+        else if($_SESSION['type']=='0') 
+        {$uid = $_SESSION['user_id'];}
         $date=$dateArray[4];
         echo "<script>console.log('".$date."')</script>";
         $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
@@ -427,7 +512,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
-        $uid = $_SESSION['user_id'];
+        if ($_SESSION['type']=='1') 
+        {$uid=$_GET['uid'];}
+        else if($_SESSION['type']=='0') 
+        {$uid = $_SESSION['user_id'];}
         $date=$dateArray[5];
         echo "<script>console.log('".$date."')</script>";
         $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
@@ -477,7 +565,10 @@
         }
         echo "<script>console.log(\"inside button1\")</script>";
 
-        $uid = $_SESSION['user_id'];
+        if ($_SESSION['type']=='1') 
+        {$uid=$_GET['uid'];}
+        else if($_SESSION['type']=='0') 
+        {$uid = $_SESSION['user_id'];}
         $date=$dateArray[6];
         echo "<script>console.log('".$date."')</script>";
         $q2 = "SELECT DISTINCT symptom FROM Symptoms WHERE (dateOfSurvey = '".$date."') AND (uid='$uid');";
@@ -517,5 +608,49 @@
             echo $htmlResult3;
          }
     } 
+
+    $q77 = "SELECT birthdate FROM userRegister WHERE (uid = '".$uid."');";
+    $r77 = $db->query($q77);
+    while($row77 = $r77->fetch_assoc()){
+        $birthdate = $row77['birthdate'];
+    }
+    echo "<script>console.log(".$birthdate.")</script>";
+
+    $birthYear = DateTime::createFromFormat("Y-m-d", "$birthdate");
+    $birth = $birthYear->format("Y");
+
+    $date = date('Y-m-d');
+
+    $todayYear = DateTime::createFromFormat("Y-m-d", "$date");
+    $today = $todayYear->format("Y");
+    
+    $age=$today-$birth;
+
+    echo $age;
+
+    echo "<script>
+    var age = document.createElement('p');
+    age.innerHTML = '<p>Age: ".$age."</p>';
+    document.getElementById(\"age\").appendChild(age);
+    </script>";
+
+    $q88 = "SELECT department, bid FROM Departments WHERE (uid = '".$uid."');";
+    $r88 = $db->query($q88);
+    while($row88 = $r88->fetch_assoc()){
+        $department1 = $row88['department'];
+        $bid = $row88['bid'];
+    }
+
+    $q99 = "SELECT corporateName FROM Corporate WHERE (bid = '".$bid."');";
+    $r99 = $db->query($q99);
+    while($row99 = $r99->fetch_assoc()){
+        $Corporation = $row99['corporateName'];
+    }
+
+    echo "<script>
+    var corp = document.createElement('p');
+    corp.innerHTML = '<p>".$department1.", ".$Corporation." </p>';
+    document.getElementById(\"corporation\").appendChild(corp);
+    </script>";
 
 ?> 
