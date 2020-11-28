@@ -37,7 +37,6 @@
       <?php if($_SESSION['type'] !== null){?>
       <h2>Privacy <?php if ($_SESSION['type']=='0'){?>User <?php }?>Agreement</h2>
       <?php }else{ ?>
-      <!-- <h2> Please login first. Thank you </h2>     -->
         <?php echo "<script type='text/javascript'> document.location = 'Signup.php'; </script>"; ?>
       <?php }?>   
     <div class="signup_container2 center">
