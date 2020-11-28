@@ -95,7 +95,6 @@
     if (isset($_POST['Submit']))  
     {  
         $uid = $_SESSION['user_id'];
-        // $uid = 1;
         $date = date('Y-m-d');
         for ($i=0; $i < sizeof ($checkbox1); $i++) {  
             $query="INSERT INTO Symptoms (uid, symptom, dateOfSurvey) VALUES ('".$uid."', '".$checkbox1[$i]."', '".$date."');";  
@@ -105,7 +104,6 @@
    
     //GET UID AND BID FROM SESSION
     $uid = $_SESSION['user_id'];
-    echo "<script>console.log(\"uid\", '".$uid."')</script>";
     $q="SELECT bid FROM userRegister WHERE (uid ='$uid')";
     $r = $db->query($q);
     if($r->num_rows>0){
@@ -113,10 +111,6 @@
             $bid = $row['bid'];
         }
     }
-    echo "<script>console.log(\"bid\", '".$bid."')</script>";
-
-    // $uid = 1; 
-    // $bid = 1; 
 
     //GET DEPARTMENTS FROM DATABASE
     $sql="SELECT DISTINCT department FROM Departments WHERE (bid = '".$bid."');";
@@ -138,7 +132,6 @@
     if (isset($_POST['Submit2']))  
     {  
         $uid = $_SESSION['user_id'];
-        echo "<script>console.log(\"uid\", '".$uid."')</script>";
         $x="SELECT bid FROM userRegister WHERE (uid = '".$uid."');";
         $y = $db->query($x);
         if($y->num_rows>0){
@@ -146,16 +139,11 @@
                 $bid = $z['bid'];
             }
         }
-        echo "<script>console.log(\"bid\", '".$bid."')</script>";
-        // $uid = 1;
-        // $bid = 1;
         $date = date('Y-m-d');
         for ($i=0; $i < sizeof ($checkbox2); $i++) {  
             $query="INSERT INTO logLocation (uid, bid, department, dateOfLog) VALUES ('".$uid."', '".$bid."', '".$checkbox2[$i]."', '".$date."');";  
             $r2 = $db->query($query);
-            echo "<script>console.log(\"saved query\")</script>";
         }  
-        echo "<script>console.log(\"inserted\")</script>";
     }
     
     $date = date('Y-m-d');
@@ -163,6 +151,7 @@
     $r3 = $db->query($q3);
     $count=0;
     $symptomArray = array();
+    unset($symptomArray);
     while($row2 = $r3->fetch_assoc()){
         $symptomArray[] = $row2['symptom'];
         $count++;
@@ -172,19 +161,15 @@
         $inContact = True;
     }
 
-    echo "<script>console.log(\"'".$count."'\")</script>";
     if ($count <= "2" && !$inContact) {
-        echo "<script>console.log(\"alert 0\")</script>";
         $q4="INSERT INTO Alert (uid, bid, alertLevel, dateOfAlert) VALUES ('".$uid."', '".$bid."', '0', '".$date."');";  
         $r4 = $db->query($q4);
     }
     else if($count >= "3" && $count <="4" && !$inContact){
-        echo "<script>console.log(\"alert 1\")</script>";
         $q5="INSERT INTO Alert (uid, bid, alertLevel, dateOfAlert) VALUES ('".$uid."', '".$bid."', '1', '".$date."');"; 
         $r5 = $db->query($q5);
     }
     else if($count >= "5" && !$inContact){
-        echo "<script>console.log(\"alert 2\")</script>";
         $q6="INSERT INTO Alert (uid, bid, alertLevel, dateOfAlert) VALUES ('".$uid."', '".$bid."', '2', '".$date."');";  
         $r6 = $db->query($q6);
     }
@@ -193,6 +178,6 @@
         $r7 = $db->query($q7);
     }
 
+    unset($symptomArray);
 
 ?>
-
