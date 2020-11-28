@@ -34,16 +34,15 @@
                         <input type="email" class="signup_input form-control" placeholder="Email address" name="loginEmail" required autofocus>
                         <input type="password" class="signup_input form-control" placeholder="Password" name="loginPassword" required>
                         <input class="btn btn-lg btn-primary btn-block signup_button"  type="submit" value="Log in" name="login_submit">
+                        <div> <p style="text-align:center; color:red ;"><?php if(isset($_GET['message'])){ echo '*'.$_GET['message'];} ?></p></div>
                     </form>
                 </div>
-
               <div class="card-header" id="headingTwo">
                   <a onClick="changeWidth();" class="btn btn-link btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                       Sign up
                   </a>
               </div>
-<!-- Add sign up sections for: employee's full name, age, and list of corporations to 
-    choose from (pulled from databasee) so that they can select where they work -->
+
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body">
                 <form class="form-signin" action="Signup.php" method="POST">
@@ -51,7 +50,7 @@
                       <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
                       <input id="email" type="email" class="signup_input form-control" placeholder="Email address" name="email" required autofocus>
                       <input id="pass" type="password" class="signup_input form-control" placeholder="Password" name="password"required>
-                      <input id="uname" type="text" class="signup_input form-control" placeholder="User name" name="username" required autofocus>
+                      <input id="uname" type="text" class="signup_input form-control" placeholder="First and last name" name="username" required autofocus>
                       <label for="birthDate" style="text-align: left;">Birth Date:
                       <input type="date" min='1899-01-01' id="birthDate" name="birthDate" class="signup_input form-control" onclick="getdate();" required/></label>  
                       <div id="employee_auth" style="visibility: hidden"> </div>
@@ -73,6 +72,7 @@
                                 <select class="custom-select" id="inputGroupSelect02" name="inputDepartment" onclick="pullDepartment();">
                                     <option selected>N/A</option>
                                 </select>
+                                
                             </div>
                             <div id="error"></div> 
                         </div>
@@ -103,31 +103,26 @@
             $hrauth=$_POST['HrAuth'];
             $email=$_POST['email'];
             $username=$_POST['username'];
-            $password=$_POST['password'];
+            $password = md5($_POST['password']);
             $birthdate=$_POST['birthDate'];
             $emp=$_POST['checkInput'];
             $dep =$_POST['dep1']; 
             $empDep =$_POST['inputDepartment'];
+            
             if($emp=='1'){
                 $sql = "INSERT INTO Corporate (corporateName,accountAuthorization) VALUES ('$corp','$hrauth')";
-                echo( mysqli_query($conn,$sql));
-                    print_r("SUCCESS");
-
-                $select_stmt_bid = "SELECT bid FROM Corporate WHERE accountAuthorization= '$_POST[HrAuth]' " ; //sql select query
+                mysqli_query($conn,$sql);
+                $select_stmt_bid = "SELECT bid FROM Corporate WHERE (accountAuthorization= '$_POST[HrAuth]' AND corporateName='$corp')"; //sql select query
                 $bidquery= mysqli_query($conn,$select_stmt_bid);
                 $row = mysqli_fetch_assoc($bidquery);
                 $bid= $row['bid'];
-                print_r($row['bid']);
 
                 $sql2 = "INSERT INTO userRegister (bid,username, email, password, birthdate, accountType) VALUES ('$bid','$username','$email','$password','$birthdate', '$emp')";
                 $userInserted=mysqli_query($conn, $sql2);
-                print_r($userInserted);
-
+                
                 $select_stmt = "SELECT * FROM userRegister WHERE email= '$email' "; //sql select query
                 $result= mysqli_query($conn,$select_stmt);
                 $user = mysqli_fetch_assoc($result);
-                print_r($user);
-                print_r($dep);
                 foreach($_POST['dep1'] as $i => $value){
                     $sql1= "INSERT INTO Departments (uid, bid, department) VALUES ('$user[uid]','$user[bid]', '$value')";
                     $depRegistered= mysqli_query($conn, $sql1);
@@ -161,31 +156,23 @@
 
         if(isset($_POST['login_submit'])){
             $email = $_POST["loginEmail"];
-            $password =$_POST["loginPassword"];
+            $password =md5($_POST["loginPassword"]);
             if (isset($_POST["loginEmail"])) {
-                // header("Location:/userAgreement.html?Welcome_user='$email'&message=login_successfully");
                 $select_stmt = "SELECT * FROM userRegister WHERE email= '$email' AND password= '$password' " ; //sql select query
-                $result= mysqli_query($conn,$select_stmt); //execute query with bind parameter
+                $result= mysqli_query($conn,$select_stmt); 
                $row = mysqli_fetch_assoc($result);
-               print_r($row);
-               print_r($result->num_rows);
                if ($result->num_rows > 0) {
-                
             		if (($email == $row["email"]) && ($password == $row["password"])) {
-                        //print_r("worked in if");
             			$_SESSION["username"] = $row["username"];
                         $_SESSION["user_id"] = $row['uid'];
                         $_SESSION["type"]= $row['accountType'];
-                        //header('Location: userAgreement.php');
                         echo "<script type='text/javascript'> document.location = 'userAgreement.php'; </script>";
-                        //header("Location: Questionairre.php", true, 307);
-                        //echo ("cant redirect");
-            			exit(0);	//to redirect and stop current execution
+                        exit(0);	
             		}
-            	} else {
-                    print_r("didnt work");
-            		header("Location: ./Signup.php?message=Invalid_Username_or_Pasword");
-            		exit();	//to redirect and stop current execution
+                } 
+                else {
+                    echo "<script type='text/javascript'> document.location = 'Signup.php?message=No%20User%20Found'; </script>";
+            		exit(0);
             	}
             }
         }
