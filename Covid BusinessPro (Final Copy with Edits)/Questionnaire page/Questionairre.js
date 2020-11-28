@@ -25,3 +25,4 @@ function finishedLocations() {
   var locations = document.getElementById('locations');
   locations.style.display = 'none';
 }
+
