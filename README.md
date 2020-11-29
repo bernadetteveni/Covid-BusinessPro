@@ -18,6 +18,7 @@ Zhuo Chen,
 Abraham Mugerwa
 
 ## Installation
+``` ssh ```
 
 ## Proposed Project
 The Covid BusinessPro web application is designed to collect information to aid with the response to the COVID-19 pandemic. Our app aims to help the people of Regina feel safe within their business organizations, and to aid local businesses with reopening operations during this time. Information will be gathered by user's responses to a series of well-designed questions that assist with decision making such as isolation efforts and contact tracing. The app provides graphical representation of the data, keeping track of trends. Users of the app can expect to:
