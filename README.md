@@ -18,7 +18,27 @@ Zhuo Chen,
 Abraham Mugerwa
 
 ## Installation
-``` ssh ```
+### Minimum Requirements:
+  * Intel Core 2 Duo processor 2.4 GHz or better
+  * If transcoding for multiple devices, a faster CPU may be required
+  * At least 2GB RAM
+  * Windows: Vista or later
+  * OS X: MacOS 10.13 or later
+  * Ubuntu, Debian, Fedora, CentOS or SuSE Linux  
+Connection via Visual Studio code:
+  * Install 'Remote - SSH' and 'Remote - SSH: Editing Configuration Files' from the extention into your packages and follow following steps:
+    1. Press F1 and run the Remote-SSH: Open SSH Host... command.
+    1. Enter your user and host/IP in the following format in the input box that appears and press enter: 'username'@184.169.60.213 or user@domain@host-or-ip
+    1. If prompted, enter your password (but we suggest setting up key based authentication).
+    1. After you are connected, use File > Open Folder to open a folder on the host.
+  * Click on Open Folders and type '/var/www/html'
+  * After successful connection, type in basic commands to make connection like:
+```
+git init
+git config --global user.name "your_username"
+git config --global user.email "your_email_address@example.com"
+
+```
 
 ## Proposed Project
 The Covid BusinessPro web application is designed to collect information to aid with the response to the COVID-19 pandemic. Our app aims to help the people of Regina feel safe within their business organizations, and to aid local businesses with reopening operations during this time. Information will be gathered by user's responses to a series of well-designed questions that assist with decision making such as isolation efforts and contact tracing. The app provides graphical representation of the data, keeping track of trends. Users of the app can expect to:
