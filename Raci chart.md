@@ -6,8 +6,8 @@ Informed:	People or teams who should be informed about changes<br>
 
 |     |Bernadette| Abraham|Zhou |Alish| Stakeholders |
 |-----|----------|----|---|---|---|
-|Main page| C I| C I |  A R| I | C I |
+|Main page| C I A R| C I |  A R| I | C I |
 |Questionare page| A R | C I | I |  C I |  C I|
 |Login page|I | C I| I| A R| I |
 |Registration page| C I| C | C | A R | I|
-|User Profile|  CA R| A R|C I |  IA R| C I|
+|User Profile|  C A R| A R|C I |  I A R| C I|
