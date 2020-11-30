@@ -7,6 +7,7 @@
 
 ## Table of Contents
 * [Members](#members)
+* [Installation](#installation)
 * [Proposed Project](#proposed‐project)
 * [Project Background](#project‐background)
 * [Business Need/Opportunity](#business‐need/opportunity)
@@ -18,7 +19,7 @@ Zhuo Chen,
 Abraham Mugerwa
 
 ## Installation
-### Minimum Requirements:
+### Recomended Requirements:
   * Intel Core 2 Duo processor 2.4 GHz or better
   * If transcoding for multiple devices, a faster CPU may be required
   * At least 2GB RAM
