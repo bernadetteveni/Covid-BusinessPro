@@ -10,4 +10,4 @@ Informed:	People or teams who should be informed about changes<br>
 |Questionare page| A R | C I | C I |  C I |  C I|
 |Login page| C I | C I| I| A R| C I |
 |Registration page| C I| C I | C I | A R | C I|
-|User Profile|  C I | A R|C I |  C I | C I|
+|User Profile|  R C I | A R| R C I |  R C I | R C I|
