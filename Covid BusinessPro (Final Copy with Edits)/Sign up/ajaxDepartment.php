@@ -1,5 +1,5 @@
 <?php 
-    require_once('./connection.php');
+    require_once('connection.php');
     $email= $_GET['email'];
     $shortemail= substr($email, strrpos($email, '@' )+1);
     $auth= $_GET['auth'];
