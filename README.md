@@ -1,7 +1,7 @@
 # ENSE 374 Project
 ## Covid BusinessPro Web Application
-
-[VLOG 1](https://www.youtube.com/watch?v=-A4Cb1X_mj0&feature=youtu.be)
+[Covid BusinessPro Advertisement] (https://youtu.be/rZd710qD6V8)
+, [VLOG 1](https://www.youtube.com/watch?v=-A4Cb1X_mj0&feature=youtu.be)
 , [VLOG 2](https://youtu.be/RHELajsj6EE)
 , [VLOG 3](https://youtu.be/NnM0xuFU-Bk)
 
