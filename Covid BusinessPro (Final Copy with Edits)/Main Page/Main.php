@@ -1,6 +1,6 @@
 <?php
 
-$db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+$db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
 if ($db->connect_error)
 {
     die ("Connection failed: " . $db->connect_error);
@@ -37,7 +37,7 @@ $check=$_SESSION['bid'];
 }
 else
 {
-  header("Location: http://184.169.60.213/Signup.php");
+  header("Location: http://www2.cs.uregina.ca/~veninatb/Signup.php");
   die();
 } 
 
@@ -57,7 +57,7 @@ else
         <div class="logo">
             Covid BusinessPro
         </div>
-        <a class="logout" href="http://184.169.60.213/Logout.php">Logout</a>
+        <a class="logout" href="http://www2.cs.uregina.ca/~veninatb/Logout.php">Logout</a>
         <div  class="position"> <button id="alert_button">Search Departments</button></div>
     </div>
     
