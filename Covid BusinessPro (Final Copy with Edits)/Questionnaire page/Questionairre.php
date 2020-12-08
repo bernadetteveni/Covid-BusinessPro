@@ -3,7 +3,7 @@
     $uid = $_SESSION['user_id'];
     echo "<script>console.log(\"logged in with uid\", '".$uid."')</script>";
     if(!isset($_SESSION['user_id'])){
-        header("Location: http://184.169.60.213/Signup.php");
+        header("Location: http://www2.cs.uregina.ca/~veninatb/Signup.php");
         die();
     }
 
@@ -21,8 +21,8 @@
         <div class="logo">
             Covid BusinessPro
         </div>
-        <a href="http://184.169.60.213/Logout.php">Logout</a>
-        <a href="http://184.169.60.213/userProfile.php">User Profile</a>
+        <a href="http://www2.cs.uregina.ca/~veninatb/Logout.php">Logout</a>
+        <a href="http://www2.cs.uregina.ca/~veninatb/userProfile.php">User Profile</a>
       </div>
       <h2>Daily Questionnaire</h2>
 
@@ -83,7 +83,7 @@
 </body>
 
 <?php
-    $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+    $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
     if ($db->connect_error)
     {
         echo "<script>console.log('Database connection failed')</script>";
@@ -156,6 +156,7 @@
         $symptomArray[] = $row2['symptom'];
         $count++;
     }
+
 
     if (in_array("I have been in contact with someone who has COVID‐19", $symptomArray)) {
         $inContact = True;
