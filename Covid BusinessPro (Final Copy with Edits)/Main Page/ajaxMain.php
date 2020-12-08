@@ -1,6 +1,6 @@
 <?php
     $bid =$_GET['bid'];
-    $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+    $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
     if ($db->connect_error)
     {
         die ("Connection failed: " . $db->connect_error);
