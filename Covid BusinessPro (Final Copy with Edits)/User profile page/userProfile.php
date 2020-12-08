@@ -24,8 +24,8 @@
         <div class="logo">
             Covid BusinessPro
         </div>
-        <a href="http://184.169.60.213/Logout.php">Logout</a>  
-        <a href="http://184.169.60.213/Questionairre.php">Questionnaire</a> 
+        <a href="http://www2.cs.uregina.ca/~veninatb/Logout.php">Logout</a>  
+        <a href="http://www2.cs.uregina.ca/~veninatb/Questionairre.php">Questionnaire</a> 
     </div>
     <div class="sidebar">
         <ul>
@@ -45,7 +45,7 @@
         <div id="text2"></div>
         <br>
         <?php
-           $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+           $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
            if ($db->connect_error)
            {
                echo "<script>console.log('Database connection failed')</script>";
@@ -176,7 +176,7 @@
 </html>
 
 <?php
-    $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+    $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
     if ($db->connect_error)
     {
         echo "<script>console.log('Database connection failed')</script>";
@@ -239,7 +239,7 @@
     } 
 
     function button1($dateArray) { 
-        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
         if ($db->connect_error)
         {
             echo "<script>console.log('Database connection failed')</script>";
@@ -292,7 +292,7 @@
     } 
 
     function button2($dateArray) { 
-        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
         if ($db->connect_error)
         {
             echo "<script>console.log('Database connection failed')</script>";
@@ -345,7 +345,7 @@
     } 
 
     function button3($dateArray) { 
-        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
         if ($db->connect_error)
         {
             echo "<script>console.log('Database connection failed')</script>";
@@ -398,7 +398,7 @@
     } 
 
     function button4($dateArray) { 
-        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
         if ($db->connect_error)
         {
             echo "<script>console.log('Database connection failed')</script>";
@@ -451,7 +451,7 @@
     } 
 
     function button5($dateArray) { 
-        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
         if ($db->connect_error)
         {
             echo "<script>console.log('Database connection failed')</script>";
@@ -504,7 +504,7 @@
     } 
 
     function button6($dateArray) { 
-        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
         if ($db->connect_error)
         {
             echo "<script>console.log('Database connection failed')</script>";
@@ -557,7 +557,7 @@
     } 
 
     function button7($dateArray) { 
-        $db = new mysqli("localhost", "ense374", "Ense374team#", "CovidApp");
+        $db = new mysqli("localhost", "veninatb", "Quincy7", "veninatb");
         if ($db->connect_error)
         {
             echo "<script>console.log('Database connection failed')</script>";
