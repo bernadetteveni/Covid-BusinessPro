@@ -1,5 +1,5 @@
 <?php
     session_start();
     session_destroy();
-    header("location:http://184.169.60.213/Signup.php");
+    header("location:http://www2.cs.uregina.ca/~veninatb/Signup.php");
 ?>
