@@ -9,9 +9,9 @@
 ## Table of Contents
 * [Members](#members)
 * [Installation](#installation)
-* [Proposed Project](#proposed)
-* [Project Background](#project)
-* [Business Need/Opportunity](#business)
+* [Proposed Project](#Proposed-Project)
+* [Project Background](#Project-Background)
+* [Business Need/Opportunity](#Business-Need/Opportunity)
 
 ## Members
 Bernadette Veninata,
