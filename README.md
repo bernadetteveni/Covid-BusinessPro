@@ -1,5 +1,6 @@
 # ENSE 374 Project
 ## Covid BusinessPro Web Application
+[Link to Website](http://www2.cs.uregina.ca/~veninatb/Signup.php)
 [Covid BusinessPro Advertisement](https://youtu.be/rZd710qD6V8) (Activity #5), 
  [VLOG 1](https://www.youtube.com/watch?v=-A4Cb1X_mj0&feature=youtu.be)
 , [VLOG 2](https://youtu.be/RHELajsj6EE)
@@ -8,9 +9,9 @@
 ## Table of Contents
 * [Members](#members)
 * [Installation](#installation)
-* [Proposed Project](#proposed‐project)
-* [Project Background](#project‐background)
-* [Business Need/Opportunity](#business‐need/opportunity)
+* [Proposed Project](#proposed)
+* [Project Background](#project)
+* [Business Need/Opportunity](#business)
 
 ## Members
 Bernadette Veninata,
@@ -29,7 +30,7 @@ Abraham Mugerwa
 Connection via Visual Studio code:
   * Install 'Remote - SSH' and 'Remote - SSH: Editing Configuration Files' from the extention into your packages and follow following steps:
     1. Press F1 and run the Remote-SSH: Open SSH Host... command.
-    1. Enter your user and host/IP in the following format in the input box that appears and press enter: 'username'@184.169.60.213 or user@domain@host-or-ip
+    1. Enter your user and host/IP in the following format in the input box that appears and press enter: user@domain@host-or-ip
     1. If prompted, enter your password (but we suggest setting up key based authentication).
     1. After you are connected, use File > Open Folder to open a folder on the host.
   * Click on Open Folders and type '/var/www/html'
