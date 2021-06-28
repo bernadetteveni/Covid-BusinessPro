@@ -1,6 +1,6 @@
 # ENSE 374 Project
 ## Covid BusinessPro Web Application
-[Link to Website](http://www2.cs.uregina.ca/~veninatb/Signup.php),
+[Link to website](http://www2.cs.uregina.ca/~veninatb/Signup.php),
 [Covid BusinessPro Advertisement](https://youtu.be/rZd710qD6V8) (Activity #5), 
  [VLOG 1](https://www.youtube.com/watch?v=-A4Cb1X_mj0&feature=youtu.be)
 , [VLOG 2](https://youtu.be/RHELajsj6EE)
